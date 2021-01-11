@@ -23,8 +23,6 @@ const navbarUl = document.getElementById('navbar__list');
 // change title's text
 const title = document.getElementById('landing-title');
 
-let navbar = document.getElementById('navbar').querySelectorAll('li');
-
 let navList = '';
 title.textContent = `Udactiy's Project`;
 /**
@@ -102,6 +100,8 @@ function topFunction() {
 }
 
 mybutton.addEventListener('click', topFunction);
+
+let navbar = document.getElementById('navbar').querySelectorAll('li');
 
 // itrate in li items list
 navbar.forEach((item) => {
