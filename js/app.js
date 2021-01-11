@@ -50,8 +50,7 @@ function addActiveClass(section) {
   const id = section.getAttribute('id');
 
   // add the active class to the section
-  //   document.querySelector(`#${id}`).classList.add('your-active-class');
-  section.classList.add('your-active-class');
+  document.querySelector(`#${id}`).classList.add('your-active-class');
 }
 
 //Removing the active class from the section
@@ -59,6 +58,19 @@ function removeActiveClass(section) {
   const id = section.getAttribute('id');
   document.querySelector(`#${id}`).classList.remove('your-active-class');
 }
+
+// calcualting when the section is active
+function makeActiveSection() {
+  sectionsElements.forEach((section) => {
+    let elementOffset = section.getBoundingClientRect();
+    if (elementOffset.top <= 150 && elementOffset.bottom >= 150) {
+      addActiveClass(section);
+    } else {
+      removeActiveClass(section);
+    }
+  });
+}
+document.addEventListener('scroll', makeActiveSection);
 
 /**
  * End Helper Functions
