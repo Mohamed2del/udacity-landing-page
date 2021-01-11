@@ -30,7 +30,8 @@ title.textContent = `Udactiy's Project`;
  
  *
  */
-console.log('dsada');
+
+// Generate navbar from sections id names we got from the querySelectorAll
 function gernerateNavbar() {
   sectionsElements.forEach((section) => {
     // add html tags for list items
@@ -41,6 +42,24 @@ function gernerateNavbar() {
   navbarUl.innerHTML = navList;
 }
 gernerateNavbar();
+
+// Add class 'active' to section when near top of viewport (Eye level )
+
+function addActiveClass(section) {
+  // get the id from the section
+  const id = section.getAttribute('id');
+
+  // add the active class to the section
+  //   document.querySelector(`#${id}`).classList.add('your-active-class');
+  section.classList.add('your-active-class');
+}
+
+//Removing the active class from the section
+function removeActiveClass(section) {
+  const id = section.getAttribute('id');
+  document.querySelector(`#${id}`).classList.remove('your-active-class');
+}
+
 /**
  * End Helper Functions
  * Begin Main Functions
