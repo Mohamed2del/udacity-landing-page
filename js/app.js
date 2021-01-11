@@ -18,12 +18,29 @@
  *
  */
 
+const sectionsElements = document.querySelectorAll('section');
+const navbarUl = document.getElementById('navbar__list');
+// change title's text
+const title = document.getElementById('landing-title');
+let navList = '';
+title.textContent = `Udactiy's Project`;
 /**
  * End Global Variables
  * Start Helper Functions
+ 
  *
  */
-
+console.log('dsada');
+function gernerateNavbar() {
+  sectionsElements.forEach((section) => {
+    // add html tags for list items
+    navList += `<li> <a class="nav__link menu__link" href="#${section.id}">
+          ${section.dataset.nav}</a></li>`;
+  });
+  // add the tags to the inner htmls
+  navbarUl.innerHTML = navList;
+}
+gernerateNavbar();
 /**
  * End Helper Functions
  * Begin Main Functions
