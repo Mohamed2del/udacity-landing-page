@@ -30,11 +30,12 @@ title.textContent = `Udactiy's Project`;
  
  *
  */
-
+console.log(sectionsElements);
 // Generate navbar from sections id names we got from the querySelectorAll
 function gernerateNavbar() {
   sectionsElements.forEach((section) => {
     // add html tags for list items
+    // dataset.nav returns DOMStringMap {nav: section 1}
     navList += `<li> <a class="nav__link menu__link" href="#${section.id}">
           ${section.dataset.nav}</a></li>`;
   });
