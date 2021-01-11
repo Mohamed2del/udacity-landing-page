@@ -17,7 +17,7 @@
  * Define Global Variables
  *
  */
-
+const mybutton = document.getElementById('myBtn');
 const sectionsElements = document.querySelectorAll('section');
 const navbarUl = document.getElementById('navbar__list');
 // change title's text
@@ -62,6 +62,10 @@ function removeActiveClass(section) {
 // calcualting when the section is active
 function makeActiveSection() {
   sectionsElements.forEach((section) => {
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
+    // DOMRect object providing information about the size of an element and its position relative to the viewport.
+    // viewport : A viewport represents a polygonal (normally rectangular) area in computer graphics that is currently being viewed.
+
     let elementOffset = section.getBoundingClientRect();
     if (elementOffset.top <= 150 && elementOffset.bottom >= 150) {
       addActiveClass(section);
@@ -70,8 +74,29 @@ function makeActiveSection() {
     }
   });
 }
+// event listener to the dom itself so
 document.addEventListener('scroll', makeActiveSection);
 
+// get a button to scroll back to top of the page
+//https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = 'block';
+  } else {
+    mybutton.style.display = 'none';
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
 /**
  * End Helper Functions
  * Begin Main Functions
